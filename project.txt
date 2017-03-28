@@ -1,0 +1,26 @@
+Github repository:
+https://github.com/jelna24/UmbracoMandatory1
+
+BackOffice Users:
+
+Administrator 
+Username: admin
+Password: administrator
+
+Editor 
+Username: Jane Wilfred
+Password: janewil24
+
+Writer
+Username: Tim Hansson
+Password: timhans24
+
+Website Members:
+
+Active member
+Username: Joergen
+Password: joergen24
+
+Guest member
+Username: Enrique
+Password: enrique24
