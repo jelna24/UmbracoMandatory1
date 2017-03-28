@@ -1,0 +1,7 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = "Master.cshtml";
+}
+@Umbraco.Field("logo")
+@Umbraco.Field("siteTitle")
+<p>@Umbraco.Field("mainContent")</p>
