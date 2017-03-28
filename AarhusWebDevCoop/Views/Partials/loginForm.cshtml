@@ -1,0 +1,58 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@using System.Web.Mvc.Html
+@using ClientDependency.Core.Mvc
+@using Umbraco.Web
+@using Umbraco.Web.Models
+@using Umbraco.Web.Controllers
+@{
+    var loginModel = new LoginModel();
+    Html.EnableClientValidation();
+}
+<div class="col-xs-12 col-md-offset-4 col-md-4 ">
+    @if (!Members.GetCurrentLoginStatus().IsLoggedIn)
+    {
+    using (Html.BeginUmbracoForm<UmbLoginController>
+        ("HandleLogin", new object { }, new { @class = "form-horizontal" }))
+        {
+        <fieldset>
+            <div class="form-group">
+                <h1 class="center-text">Log In</h1>
+            </div>
+            @Html.ValidationSummary("loginModel", true)
+            <div class="form-group">
+                @Html.LabelFor(m => loginModel.Username, new { @class = "control-label" })
+                @Html.TextBoxFor(m => loginModel.Username, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => loginModel.Username, String.Empty, new { @class = "error" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => loginModel.Password, new { @class = "control-label" })
+                @Html.PasswordFor(m => loginModel.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => loginModel.Password, String.Empty, new { @class = "error" })
+            </div>
+            <div class="form-group right-text">
+                <button class="btn btn-primary">Log in</button>
+            </div>
+        </fieldset>
+        }
+        }
+        else
+        {
+        <p class="center-text logged-in">
+            You are currently logged in as
+            @Members.GetCurrentLoginStatus().Name
+        </p>
+        var logoutModel = new PostRedirectModel();
+        logoutModel.RedirectUrl = "/";
+        using (Html.BeginUmbracoForm<UmbLoginStatusController>
+            ("HandleLogout", new object { }, new { @class = "form-horizontal" }))
+            {
+            <div class="form-group center-text">
+                <button class="btn btn-primary">Log out</button>
+                @Html.HiddenFor(m => logoutModel.RedirectUrl)
+
+            </div>
+            }
+
+            }
+</div>

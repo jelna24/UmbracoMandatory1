@@ -1,0 +1,74 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Members>
+@using Newtonsoft.Json
+@using Umbraco.Web.Models
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "Master.cshtml";
+}
+<div class="col-xs-12">
+    <h1 class="center-text">Members</h1>
+</div>
+<div class="col-xs-6">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="center-text">Active</h2>
+            <hr />
+        </div>
+        <div class="col-xs-12">
+            @foreach (var member in ApplicationContext.Current.Services.MemberService.GetMembersByGroup("Active"))
+            {
+                <div class="row">
+
+                    <div class="col-xs-6 center-text">
+                        @if (member.GetValue("photo") != null)
+                {
+                    string image = member.GetValue<string>("photo");
+                    if (image != null)
+                    {
+                        var imageCrop = JsonConvert.DeserializeObject<ImageCropDataSet>(image);
+                        var imagePath = imageCrop.Src.GetCropUrl(width: 100);
+                                <img class="img-responsive" src="@imagePath " />
+                            }
+                        }
+                    </div>
+
+                    <div class="col-xs-6">
+                        <p style="color:#f1f1f1;">
+                            <strong>@member.Name</strong> <br>
+                            @member.GetValue("address")<br>
+                            @member.GetValue("zip") @member.GetValue("city")<br>
+                            Email: @member.Email<br>
+                            Skills:
+                            @{
+                                String[] skills = member.GetValue("skills").ToString().Split(',');
+                                string skillString = string.Join(", ", from skill in skills
+                                                                       select umbraco.library.GetPreValueAsString(Convert.ToInt32(skill)));
+                            }
+                            @skillString
+                        </p>
+
+                    </div>
+                    
+                </div>
+                                }
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-6">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="center-text">Guests</h2>
+            <hr />
+        </div>
+        <div class="col-xs-12">
+            @foreach (var member in ApplicationContext.Current.Services.MemberService.GetMembersByGroup("Guest"))
+            {
+                <p class="center-text" style="color:#f1f1f1;">
+                    @member.Name
+                </p>
+
+            }
+        </div>
+    </div>
+</div>

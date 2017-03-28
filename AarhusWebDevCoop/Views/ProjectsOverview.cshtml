@@ -4,4 +4,11 @@
 	Layout = "Master.cshtml";
 }
 
-<h1>@Umbraco.Field("projectsTitle")</h1>
+<div class="overview">
+    <div class="col-xs-12">
+        <h1 class="center-text">@Umbraco.Field("projectsTitle")</h1>
+    </div>
+    <div class="col-xs-12">
+        @Umbraco.Field("projectsBodyText")
+    </div>
+</div>

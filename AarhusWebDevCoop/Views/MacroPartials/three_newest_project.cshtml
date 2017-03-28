@@ -1,0 +1,18 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+	@{
+    var homePage = CurrentPage.Site();
+    var selection = homePage.Children.Where("DocumentTypeAlias == \"projectsOverview\"").First().Children().Where("projectStatus.Contains(\"30\")").OrderBy("CreateDate desc").Take(3);
+}
+<ul>
+    @foreach (var item in selection)
+    {
+        var isProtectedChild = umbraco.library.IsProtected(item.id, item.path);
+        var loginAccessChild = umbraco.library.IsProtected(item.id, item.path)
+        && umbraco.library.HasAccess(item.id, item.path);
+
+        if (!isProtectedChild || loginAccessChild)
+        {
+            <li><a href="@item.Url">@item.Name</a></li>
+        }
+    }
+</ul>

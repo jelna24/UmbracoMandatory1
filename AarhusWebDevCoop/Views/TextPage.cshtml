@@ -3,4 +3,10 @@
 @{
 	Layout = "Master.cshtml";
 }
-<div>@CurrentPage.GetGridHtml("gridLayout")</div>
+<div class="col-xs-12">
+    @Umbraco.Field("header")
+    ]
+</div>
+<div class="col-xs-12">
+    @Umbraco.Field("mainContent")
+</div>

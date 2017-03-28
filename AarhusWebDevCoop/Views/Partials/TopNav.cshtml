@@ -1,0 +1,123 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var homePage = CurrentPage.Site();
+    var selection = homePage.Children.Where("Visible"); }
+
+
+
+@if (selection.Any() || !homePage.umbracoNaviHide)
+{
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="@homePage.Url">
+                      AARHUS WEB DEVELOPER CORPORATION
+                     </a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        @if (!homePage.umbracoNaviHide)
+                        {
+                            <li class="@(CurrentPage.IsAncestorOrSelf(homePage) ? "current" : null)"><a href="@homePage.Url">@homePage.Name</a></li>
+                        }
+                        @foreach (var item in selection)
+                        {
+
+                            var isProtected = umbraco.library.IsProtected(item.id, item.path);
+                            var loginAccess = umbraco.library.IsProtected(item.id, item.path)
+                                              && umbraco.library.HasAccess(item.id, item.path);
+
+                            if (item.Children.Any())
+                            {
+                                <li class="dropdown @(item.IsAncestorOrSelf(CurrentPage) ? "current" : null)">
+                                    <a href="@item.Url">@item.Name<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        @foreach (var itemChild in item.Children)
+                                        {
+                                            var isProtectedChild = umbraco.library.IsProtected(itemChild.id, itemChild.path);
+                                            var loginAccessChild = umbraco.library.IsProtected(itemChild.id, itemChild.path)
+                                                                   && umbraco.library.HasAccess(itemChild.id, itemChild.path);
+
+                                            if (!isProtectedChild || loginAccessChild)
+                                            {
+                                                if ((Umbraco.GetPreValueAsString(itemChild.projectStatus).Equals("Completed") 
+                                                    && !itemChild.umbracoNaviHide) || Umbraco.GetPreValueAsString(itemChild.projectStatus).Equals(""))
+                                                {
+
+                                                    <li><a href="@itemChild.Url">@itemChild.Name</a></li>
+
+                                                }
+                                                else
+                                                {
+                                                    var member = Members.GetCurrentLoginStatus().Username;
+                                                    if (member != null)
+                                                    {
+                                                        var roles = System.Web.Security.Roles.GetRolesForUser(member);
+                                                        if (roles.ToList().Contains("Active"))
+                                                        {
+                                                            if (!itemChild.umbracoNaviHide)
+                                                            {
+                                                                <li><a href="@itemChild.Url">@itemChild.Name</a></li>
+                                                            }
+
+                                                        }
+                                                        else
+                                                        {
+                                                            if (roles.ToList().Contains("Guest"))
+                                                            {
+                                                                if (Umbraco.GetPreValueAsString(itemChild.projectStatus).Equals("Initiated") && !itemChild.umbracoNaviHide)
+                                                                {
+                                                                    <li><a href="@itemChild.Url">@itemChild.Name</a></li>
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                if (!isProtected || loginAccess)
+                                {
+                                    if (item.DocumentTypeAlias.Equals("login"))
+                                    {
+                                        if (Umbraco.MemberIsLoggedOn())
+                                        {
+                                            <li class="@(item.IsAncestorOrSelf(CurrentPage) ? "current" : null)">
+                                                <a href="@item.Url">LOGOUT</a>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="@(item.IsAncestorOrSelf(CurrentPage) ? "current" : null)">
+                                                <a href="@item.Url">LOGIN</a>
+                                            </li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <li class="@(item.IsAncestorOrSelf(CurrentPage) ? "current" : null)">
+                                            <a href="@item.Url">@item.Name</a>
+                                        </li>
+                                    }
+                                }
+                            }
+                        }
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </header>
+}
