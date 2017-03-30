@@ -332,6 +332,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\cache\0\3\2\9\7\a\03297aa656cd7f077aa16cde8b8ade794d2eb089.jpg" />
+    <Content Include="App_Data\cache\0\6\c\8\6\9\06c869c7b65ad2039f40aaa2fae107409fb3d186.jpg" />
+    <Content Include="App_Data\cache\1\a\5\0\f\8\1a50f899f3fea5f6a4708bf6db9c39b9d78b2076.jpg" />
+    <Content Include="App_Data\cache\3\9\b\a\5\7\39ba57d6ee020a9b0d9f217a2ccdc88ffcef405c.jpg" />
+    <Content Include="App_Data\cache\4\6\8\1\1\b\46811b1c7b82d4da9010e2a69f3f34815f229c00.jpg" />
+    <Content Include="App_Data\cache\4\d\5\3\8\2\4d53827855344ce4585d74458e81cbf023de33c8.jpg" />
+    <Content Include="App_Data\cache\4\f\5\8\8\1\4f5881fd067d56690e53b522126acc571fe2f261.png" />
+    <Content Include="App_Data\cache\6\6\3\2\5\0\6632501669293cfcc6f9ed92cc9748a155f541c9.jpg" />
+    <Content Include="App_Data\cache\6\f\6\e\b\1\6f6eb1cb7ff9cfc9c5280385670372047d98c804.png" />
+    <Content Include="App_Data\cache\8\1\6\8\d\1\8168d177f617984947a4c683f51ee772df14cd47.jpg" />
+    <Content Include="App_Data\cache\9\2\2\0\6\6\922066f98ed9a66117009804568594e8e278e4c6.jpg" />
+    <Content Include="App_Data\cache\a\0\7\2\a\a\a072aa89b6020e059ab82f540d492ee7fdfbfaa9.jpg" />
+    <Content Include="App_Data\cache\a\3\0\9\3\3\a30933d95c0944c236b98a76bab0397ad9e43fb5.jpg" />
+    <Content Include="App_Data\cache\a\7\5\c\1\b\a75c1b66617cb59b575ad35d5c29f68bdb9b8259.gif" />
+    <Content Include="App_Data\cache\b\3\0\0\e\d\b300eda389ae46ee1335968fb32da483dcca3394.jpg" />
+    <Content Include="App_Data\cache\c\1\f\6\9\2\c1f692e4f14844de726ec088209d873a0ba3f084.gif" />
+    <Content Include="App_Data\cache\c\a\b\f\5\e\cabf5e0e18a6e7c1eb7627e76971167756f2da7e.jpg" />
+    <Content Include="App_Data\cache\c\f\1\0\8\a\cf108a9f4e746111fa041fd1232c871304b5119f.jpg" />
+    <Content Include="App_Data\cache\d\5\b\8\6\8\d5b868b4057b8260b2250b34cea248d30b208872.jpg" />
+    <Content Include="App_Data\cache\e\9\e\2\5\9\e9e259fdcb863045f1a41233094cd7ec595fad91.jpg" />
     <Content Include="App_Data\Logs\UmbracoTraceLog.AsusK95VM.txt" />
     <Content Include="App_Data\NuGetBackup\20170209-195541\bin\AutoMapper.dll" />
     <Content Include="App_Data\NuGetBackup\20170209-195541\bin\AutoMapper.Net4.dll" />
@@ -904,6 +924,9 @@
     <Content Include="Content\scss\style.scss" />
     <Content Include="Content\scss\_bootstrap-variables.scss" />
     <Content Include="Content\scss\_custom.scss" />
+    <Content Include="App_Data\preview\0_1cb4d23f-cc7a-45a1-acf1-b4ab03b91c5b.config" />
+    <Content Include="App_Data\Models\all.dll.path" />
+    <Content Include="App_Data\Models\models.hash" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -3586,6 +3609,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Data\Models\all.generated.cs" />
+    <Compile Include="App_Data\Models\models.generated.cs" />
     <Compile Include="Controllers\ContactFormSurfaceController.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
@@ -3598,10 +3623,10 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\Models\" />
     <Folder Include="App_Data\NuGetBackup\20170209-195616\Umbraco\" />
     <Folder Include="App_Data\NuGetBackup\20170209-195616\Umbraco_Client\" />
     <Folder Include="App_Data\packages\created\" />
+    <Folder Include="App_Data\TEMP\FileUploads\" />
     <Folder Include="App_Data\TEMP\Install\" />
     <Folder Include="bower_components\bootstrap-sass\assets\images\" />
     <Folder Include="obj\Debug\TempPE\" />
