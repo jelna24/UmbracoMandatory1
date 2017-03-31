@@ -86,3 +86,6 @@ c:\users\asus\documents\visual studio 2015\Projects\AarhusWebDevCoop\AarhusWebDe
 c:\users\asus\documents\visual studio 2015\Projects\AarhusWebDevCoop\AarhusWebDevCoop\obj\Debug\AarhusWebDevCoop.dll
 c:\users\asus\documents\visual studio 2015\Projects\AarhusWebDevCoop\AarhusWebDevCoop\obj\Debug\AarhusWebDevCoop.pdb
 C:\Users\Asus\documents\visual studio 2015\Projects\AarhusWebDevCoop\AarhusWebDevCoop\bin\App_Data\NuGetBackup\20170209-195541\bin\AutoMapper.Net4.dll
+C:\Users\Asus\Documents\Visual Studio 2015\Projects\AarhusWebDevCoop2\AarhusWebDevCoop\obj\Debug\AarhusWebDevCoop.csprojResolveAssemblyReference.cache
+C:\Users\Asus\Documents\Visual Studio 2015\Projects\AarhusWebDevCoop2\AarhusWebDevCoop\obj\Debug\AarhusWebDevCoop.dll
+C:\Users\Asus\Documents\Visual Studio 2015\Projects\AarhusWebDevCoop2\AarhusWebDevCoop\obj\Debug\AarhusWebDevCoop.pdb
